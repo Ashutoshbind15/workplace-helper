@@ -8,7 +8,11 @@ const Navbar = () => {
         Workplace-help-app
       </Link>
 
-      <div className="flex gap-x-3 items-center"></div>
+      <div className="flex gap-x-3 items-center">
+        <Link href={"/profile"} className="flex-1">
+          Profile
+        </Link>
+      </div>
     </nav>
   );
 };

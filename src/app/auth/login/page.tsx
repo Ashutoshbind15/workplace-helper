@@ -1,7 +1,6 @@
-import { connectDB } from "@/db";
-import { User } from "@/db/models/User";
 import { lucia } from "@/lib/auth";
-import { verify } from "@node-rs/argon2";
+import { validateUserPassword } from "@/lib/auth/utils";
+import { getUser } from "@/use-cases/user";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -24,6 +23,9 @@ export default async function Page() {
 
 async function emaillogin(formData: FormData) {
   "use server";
+
+  // todo: use some validation library
+
   const email = formData.get("email");
   const password = formData.get("password");
 
@@ -39,11 +41,7 @@ async function emaillogin(formData: FormData) {
     });
   }
 
-  await connectDB();
-
-  const user = await User.findOne({
-    email,
-  });
+  const user = await getUser(email);
 
   if (!user) {
     return {
@@ -51,18 +49,7 @@ async function emaillogin(formData: FormData) {
     };
   }
 
-  if (!password) {
-    return {
-      error: "Password is required",
-    };
-  }
-
-  const validPassword = await verify(user.password_hash, password, {
-    memoryCost: 19456,
-    timeCost: 2,
-    outputLen: 32,
-    parallelism: 1,
-  });
+  const validPassword = await validateUserPassword(user, password);
   if (!validPassword) {
     return {
       error: "Incorrect username or password",
