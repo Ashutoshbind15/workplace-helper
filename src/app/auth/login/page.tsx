@@ -1,4 +1,4 @@
-import { lucia } from "@/lib/auth";
+import { getLucia } from "@/lib/auth";
 import { validateUserPassword } from "@/lib/auth/utils";
 import { getUser } from "@/use-cases/user";
 import { cookies } from "next/headers";
@@ -23,6 +23,8 @@ export default async function Page() {
 
 async function emaillogin(formData: FormData) {
   "use server";
+
+  const lucia = await getLucia();
 
   // todo: use some validation library
 

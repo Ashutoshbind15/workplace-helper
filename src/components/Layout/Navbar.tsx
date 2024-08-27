@@ -12,6 +12,9 @@ const Navbar = () => {
         <Link href={"/profile"} className="flex-1">
           Profile
         </Link>
+        <Link href={"/teams"} className="flex-1">
+          Teams
+        </Link>
       </div>
     </nav>
   );

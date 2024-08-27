@@ -1,4 +1,4 @@
-import { lucia } from "@/lib/auth";
+import { getLucia } from "@/lib/auth";
 import { createNewUser } from "@/use-cases/user";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -22,6 +22,9 @@ export default async function Page() {
 
 async function emailsignup(formData: FormData) {
   "use server";
+
+  const lucia = await getLucia();
+
   const email = formData.get("email");
   const password = formData.get("password");
 

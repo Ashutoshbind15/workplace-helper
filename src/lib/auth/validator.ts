@@ -2,11 +2,13 @@ import "server-only";
 
 import { cookies } from "next/headers";
 import { cache } from "react";
-import { lucia } from ".";
 import { connectDB } from "@/db";
 import { User } from "@/db/models/User";
+import { getLucia } from ".";
 
 export const validateRequest = cache(async () => {
+  const lucia = await getLucia();
+
   const sessionId = cookies().get(lucia.sessionCookieName)?.value ?? null;
   if (!sessionId) {
     return {

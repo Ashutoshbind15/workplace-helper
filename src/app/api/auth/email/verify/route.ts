@@ -1,6 +1,6 @@
 import { connectDB } from "@/db";
 import { User } from "@/db/models/User";
-import { lucia } from "@/lib/auth";
+import { getLucia } from "@/lib/auth";
 import { verifyVerificationCode } from "@/lib/auth/emailAuth";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
@@ -8,6 +8,9 @@ import type { NextRequest } from "next/server";
 
 export const POST = async (req: NextRequest) => {
   const body = await req.json();
+
+  const lucia = await getLucia();
+
   const sessionId = cookies().get(lucia.sessionCookieName)?.value ?? null;
   if (!sessionId) {
     return NextResponse.json({ error: "No session found" }, { status: 401 });

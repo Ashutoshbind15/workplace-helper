@@ -1,4 +1,4 @@
-import { lucia } from "@/lib/auth";
+import { getLucia } from "@/lib/auth";
 import { isVerifiedEmail, validateRequest } from "@/lib/auth/validator";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -18,7 +18,7 @@ export default async function Page() {
 
   return (
     <>
-      <h1>Welcome, {user.email}</h1>
+      <h1>Welcome, {user.email}!</h1>
       <form action={logout}>
         <button>Sign out</button>
       </form>
@@ -34,6 +34,8 @@ async function logout() {
       error: "Unauthorized",
     };
   }
+
+  const lucia = await getLucia();
 
   await lucia.invalidateSession(session.id);
 
