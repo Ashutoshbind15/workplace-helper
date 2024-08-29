@@ -8,11 +8,12 @@ import {
 } from "@/db-access/team";
 
 export const changeUserRoleUseCase = async (
+  cuserid: string,
   teamid: string,
   userid: string,
   role: string
 ) => {
-  const isAdmin = await isTeamAdmin(teamid, userid);
+  const isAdmin = await isTeamAdmin(teamid, cuserid);
 
   if (!isAdmin) {
     throw new Error("You are not allowed to change user role");

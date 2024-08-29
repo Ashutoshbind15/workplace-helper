@@ -39,11 +39,14 @@ export const isTeamAdmin = async (teamId: string, userId: string) => {
 
   const team = await Team.findOne({
     _id: teamId,
-    "members.user": userId,
-    "members.role": "admin",
   });
 
-  return !!team;
+  if (!team) {
+    return false;
+  }
+
+  const member = team.members.find((m: any) => m.user === userId);
+  return member.role === "admin";
 };
 
 export const getTeams = async (userId: string) => {
@@ -83,8 +86,11 @@ export const isTeamMember = async (teamId: string, userId: string) => {
 
   const team = await Team.findOne({
     _id: teamId,
-    "members.user": userId,
   });
 
-  return !!team;
+  if (!team) {
+    return false;
+  }
+
+  return !!team.members.find((m: any) => m.user === userId);
 };

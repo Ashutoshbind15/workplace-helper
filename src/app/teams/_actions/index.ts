@@ -51,7 +51,7 @@ export const changeUserRoleAction = async (
     };
   }
 
-  await changeUserRoleUseCase(teamid, userid, role);
+  await changeUserRoleUseCase(user.id, teamid, userid, role);
   revalidatePath(`/teams/${teamid}`);
   revalidatePath("/teams");
 };
