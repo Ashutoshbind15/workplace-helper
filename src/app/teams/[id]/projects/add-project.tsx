@@ -25,15 +25,19 @@ const AddProjectForm = ({ teamId }: { teamId: string }) => {
 
   return (
     <form action={resAction}>
-      <Label htmlFor="title">Title</Label>
-      <Input name="title" placeholder="Title" id="title" />
+      <div className="mb-2">
+        <Label htmlFor="title">Title</Label>
+        <Input name="title" placeholder="Title" id="title" />
+      </div>
 
-      <Label htmlFor="description">Description</Label>
-      <Input name="description" placeholder="Description" id="description" />
+      <div className="mb-2">
+        <Label htmlFor="description">Description</Label>
+        <Input name="description" placeholder="Description" id="description" />
+      </div>
 
       <Input type="hidden" name="teamId" value={teamId} />
 
-      {state.message && <p>{state.message}</p>}
+      {state.message && <p className="my-1">{state.message}</p>}
 
       <AddProjectFormSubmitButton />
     </form>

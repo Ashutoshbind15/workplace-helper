@@ -5,8 +5,6 @@ import { User } from "@/db/models/User";
 export const getProjects = async (userId: string, teamId: string) => {
   await connectDB();
 
-  console.log(teamId);
-
   const projects = await Project.find({
     teamid: teamId,
   }).populate([
