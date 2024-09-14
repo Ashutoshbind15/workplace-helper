@@ -4,6 +4,7 @@ import { validateUserPassword } from "@/lib/auth/utils";
 import { getUser } from "@/use-cases/user";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 
 export default async function Page() {
   return (
@@ -19,7 +20,9 @@ export default async function Page() {
         <button>Continue</button>
       </form>
 
-      <UserFetcher />
+      <Suspense>
+        <UserFetcher />
+      </Suspense>
     </>
   );
 }

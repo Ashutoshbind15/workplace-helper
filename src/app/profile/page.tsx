@@ -3,6 +3,7 @@ import { getLucia } from "@/lib/auth";
 import { isVerifiedEmail, validateRequest } from "@/lib/auth/validator";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 
 export default async function Page() {
   const isUserAndEmailVerified = await isVerifiedEmail();
@@ -24,7 +25,9 @@ export default async function Page() {
         <button>Sign out</button>
       </form>
 
-      <UserFetcher />
+      <Suspense>
+        <UserFetcher />
+      </Suspense>
     </>
   );
 }
