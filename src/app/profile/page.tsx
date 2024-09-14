@@ -1,3 +1,4 @@
+import UserFetcher from "@/components/auth/UserFetcher";
 import { getLucia } from "@/lib/auth";
 import { isVerifiedEmail, validateRequest } from "@/lib/auth/validator";
 import { cookies } from "next/headers";
@@ -22,6 +23,8 @@ export default async function Page() {
       <form action={logout}>
         <button>Sign out</button>
       </form>
+
+      <UserFetcher />
     </>
   );
 }
@@ -45,5 +48,5 @@ async function logout() {
     sessionCookie.value,
     sessionCookie.attributes
   );
-  return redirect("/auth/login");
+  return redirect("/auth/login?redirect=loggedout");
 }

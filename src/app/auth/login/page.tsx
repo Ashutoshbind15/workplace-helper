@@ -1,3 +1,4 @@
+import UserFetcher from "@/components/auth/UserFetcher";
 import { getLucia } from "@/lib/auth";
 import { validateUserPassword } from "@/lib/auth/utils";
 import { getUser } from "@/use-cases/user";
@@ -17,6 +18,8 @@ export default async function Page() {
         <br />
         <button>Continue</button>
       </form>
+
+      <UserFetcher />
     </>
   );
 }
@@ -65,5 +68,5 @@ async function emaillogin(formData: FormData) {
     sessionCookie.value,
     sessionCookie.attributes
   );
-  return redirect("/");
+  return redirect("/profile?redirect=loggedin");
 }
