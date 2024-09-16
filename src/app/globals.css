@@ -67,3 +67,23 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* VideoStyles.css */
+
+.local-user-video {
+  width: 150px;
+  height: 100px;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.remote-user-video {
+  width: 400px;
+  height: 300px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 8px;
+}

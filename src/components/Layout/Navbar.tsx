@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import UserDropComp from "./UserDropComp";
 
 const Navbar = () => {
   return (
@@ -15,6 +16,8 @@ const Navbar = () => {
         <Link href={"/teams"} className="flex-1">
           Teams
         </Link>
+
+        <UserDropComp />
       </div>
     </nav>
   );
