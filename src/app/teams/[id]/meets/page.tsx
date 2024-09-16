@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import Basics from "./[mid]/components/Basics";
 
 const MeetPage = ({
   params,
@@ -12,18 +13,14 @@ const MeetPage = ({
 }) => {
   const router = useRouter();
 
-  const startRoom = async () => {};
-
   return (
     <div>
-      <h1>Team Meetings</h1>
-
       <Button
         onClick={() => {
-          startRoom();
+          router.push(`/teams/${params.id}/meets/${params.id}`);
         }}
       >
-        Start Team Meeting
+        Join team meeting
       </Button>
     </div>
   );
