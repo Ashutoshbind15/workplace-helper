@@ -1,8 +1,10 @@
+import UserFetcher from "@/components/auth/UserFetcher";
 import { getLucia } from "@/lib/auth";
 import { validateUserPassword } from "@/lib/auth/utils";
 import { getUser } from "@/use-cases/user";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 
 export default async function Page() {
   return (
@@ -17,6 +19,10 @@ export default async function Page() {
         <br />
         <button>Continue</button>
       </form>
+
+      <Suspense>
+        <UserFetcher />
+      </Suspense>
     </>
   );
 }
@@ -65,5 +71,5 @@ async function emaillogin(formData: FormData) {
     sessionCookie.value,
     sessionCookie.attributes
   );
-  return redirect("/");
+  return redirect("/profile?redirect=loggedin");
 }

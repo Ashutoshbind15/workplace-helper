@@ -49,5 +49,5 @@ async function emailsignup(formData: FormData) {
     sessionCookie.value,
     sessionCookie.attributes
   );
-  return redirect("/");
+  return redirect("/auth/verifyemail");
 }
