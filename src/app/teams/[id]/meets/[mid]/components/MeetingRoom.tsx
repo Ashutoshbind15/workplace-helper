@@ -49,7 +49,6 @@ const MeetingRoom = () => {
     useParticipantCount,
     useLocalParticipant,
     useRemoteParticipants,
-    useParticipants,
   } = useCallStateHooks();
 
   // for more detail about types of CallingState see: https://getstream.io/video/docs/react/ui-cookbook/ringing-call/#incoming-call-panel
@@ -57,8 +56,6 @@ const MeetingRoom = () => {
   const participantCount = useParticipantCount();
   const localParticipant = useLocalParticipant();
   const remoteParticipants = useRemoteParticipants();
-
-  const participants = useParticipants();
 
   if (callingState !== CallingState.JOINED) return <>Loading ...</>;
 
@@ -68,24 +65,6 @@ const MeetingRoom = () => {
       <MyParticipantList participants={remoteParticipants} />
       <MyFloatingLocalParticipant participant={localParticipant} />
       <span>{participantCount}</span>
-
-      {/* todo: preview the participants before having joined the video call */}
-      <div>
-        {participants.map((p) => (
-          <div key={p.userId}>
-            <p>{p.name}</p>
-            <p>
-              {p.joinedAt ? "Joined at " + p.joinedAt.toString() : "Not joined"}
-            </p>
-
-            <p>{p.isSpeaking ? "Speaking" : "Not speaking"}</p>
-
-            <p>
-              {p.screenShareStream ? "Screen sharing" : "Not screen sharing"}``
-            </p>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };

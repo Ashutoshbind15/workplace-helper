@@ -1,7 +1,11 @@
 "use client";
 
 import { useGetCallById } from "@/hooks/conferencing/calls";
-import { StreamCall, StreamTheme } from "@stream-io/video-react-sdk";
+import {
+  StreamCall,
+  StreamTheme,
+  useCallStateHooks,
+} from "@stream-io/video-react-sdk";
 import { useEffect, useState } from "react";
 import MeetingSetup from "./MeetingSetup";
 import MeetingRoom from "./MeetingRoom";
@@ -19,6 +23,10 @@ const Main = ({
   const [isSetupComplete, setIsSetupComplete] = useState(false);
 
   useEffect(() => {
+    if (!isCallLoading && call) {
+      call.get();
+    }
+
     return () => {
       if (!isCallLoading && call) {
         call.leave();
