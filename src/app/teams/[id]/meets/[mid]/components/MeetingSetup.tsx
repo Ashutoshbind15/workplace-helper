@@ -4,26 +4,21 @@ import { useEffect, useState } from "react";
 
 const MeetingSetup = ({ setIsSetupComplete }: any) => {
   const call = useCall();
-
   const [isMicCamToggled, setIsMicCamToggled] = useState(false);
 
-  if (!call) {
-    throw new Error(
-      "useStreamCall must be used within a StreamCall component."
-    );
-  }
-
   useEffect(() => {
-    if (isMicCamToggled) {
-      call.camera.disable();
-      call.microphone.disable();
-    } else {
-      call.camera.enable();
-      call.microphone.enable();
+    if (call) {
+      if (isMicCamToggled) {
+        call.camera.disable();
+        call.microphone.disable();
+      } else {
+        call.camera.enable();
+        call.microphone.enable();
+      }
     }
-  }, [isMicCamToggled, call.camera, call.microphone]);
+  }, [isMicCamToggled, call]);
 
-  if (!call) return <p>Loading...</p>;
+  if (!call) return <p>Call not found...</p>;
   return (
     <div>
       <div className="flex h-16 items-center justify-center gap-3">
