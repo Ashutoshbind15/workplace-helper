@@ -67,3 +67,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+.diagramcontainer {
+  height: 75vh;
+  width: 80vw;
+}
