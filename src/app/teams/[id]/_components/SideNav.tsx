@@ -7,7 +7,7 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip";
-import { CodeIcon, PresentationIcon } from "lucide-react";
+import { CodeIcon, PencilIcon, PresentationIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import Link from "next/link";
@@ -55,6 +55,11 @@ const SideNav = ({ id }: { id: string }) => {
         subpath="meets"
         description="Meets"
         Icon={PresentationIcon}
+      />
+      <SideNavLink
+        subpath="diagrams"
+        description="Diagrams"
+        Icon={PencilIcon}
       />
     </div>
   );

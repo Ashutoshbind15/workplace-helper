@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Layout/Navbar";
 import ClientWrapper from "@/components/Wrappers/ClientWrapper";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,6 +20,7 @@ export default function RootLayout({
         <ClientWrapper>
           <Navbar />
           <main>{children}</main>
+          <Toaster />
         </ClientWrapper>
       </body>
     </html>
