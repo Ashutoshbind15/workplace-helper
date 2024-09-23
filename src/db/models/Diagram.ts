@@ -13,5 +13,9 @@ export const Diagram =
         type: mongoose.Schema.Types.String,
         ref: "User",
       },
+      team_id: {
+        type: mongoose.Schema.Types.String,
+        ref: "Team",
+      },
     })
   );
