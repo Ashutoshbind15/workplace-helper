@@ -1,6 +1,6 @@
-import { StreamChat } from "stream-chat";
+import { StreamClient } from "@stream-io/node-sdk";
 
 const API_KEY = process.env.STREAM_API_KEY;
 const API_SECRET = process.env.STREAM_SECRET_KEY;
 
-export const serverClient = StreamChat.getInstance(API_KEY!, API_SECRET!);
+export const client = new StreamClient(API_KEY!, API_SECRET!);

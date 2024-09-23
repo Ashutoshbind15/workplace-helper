@@ -4,7 +4,6 @@ import { useGetCallById } from "@/hooks/conferencing/calls";
 import {
   StreamCall,
   StreamTheme,
-  useCallStateHooks,
 } from "@stream-io/video-react-sdk";
 import { useEffect, useState } from "react";
 import MeetingSetup from "./MeetingSetup";

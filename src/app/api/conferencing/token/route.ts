@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { validateRequest } from "@/lib/auth/validator";
-import { serverClient } from "@/lib/conferencing/stream";
+import { client } from "@/lib/conferencing/stream";
 
 export const GET = async (req: NextRequest) => {
   const { user } = await validateRequest();
@@ -10,7 +10,7 @@ export const GET = async (req: NextRequest) => {
   }
 
   const uid = user.id;
-  const token = serverClient.createToken(uid);
+  const token = client.generateUserToken({ user_id: uid });
 
   return NextResponse.json({ token }, { status: 200 });
 };
