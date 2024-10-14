@@ -12,6 +12,7 @@ import {
   NotebookIcon,
   PencilIcon,
   PresentationIcon,
+  TextIcon,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 
@@ -54,7 +55,7 @@ const SideNav = ({ id }: { id: string }) => {
   };
 
   return (
-    <div className="h-screen px-2 border-r-2 border-slate-300 flex flex-col pt-2 gap-y-3 items-center">
+    <div className="min-h-screen px-2 border-r-2 border-slate-300 flex flex-col pt-2 gap-y-3 items-center">
       <SideNavLink subpath="projects" description="Projects" Icon={CodeIcon} />
       <SideNavLink
         subpath="meets"
@@ -67,6 +68,7 @@ const SideNav = ({ id }: { id: string }) => {
         Icon={PencilIcon}
       />
       <SideNavLink subpath="notes" description="notes" Icon={NotebookIcon} />
+      <SideNavLink subpath="chat" description="chat" Icon={TextIcon} />
     </div>
   );
 };
